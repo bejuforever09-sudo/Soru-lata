@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BEJU Musik AI</title>
+    <title>BEJU AI Musik</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
             backdrop-filter: blur(10px);
             border-radius: 30px;
             padding: 40px;
-            max-width: 500px;
+            max-width: 600px;
             width: 100%;
             box-shadow: 0 25px 45px rgba(0,0,0,0.3);
             border: 1px solid rgba(255,255,255,0.2);
@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
             font-size: 2em;
             margin-bottom: 10px;
         }
-        p {
+        .subtitle {
             text-align: center;
             color: #ccc;
             margin-bottom: 30px;
@@ -75,7 +75,7 @@ app.get('/', (req, res) => {
             background: rgba(0,0,0,0.4);
             border-radius: 15px;
             color: white;
-            line-height: 1.6;
+            line-height: 1.8;
             white-space: pre-line;
         }
         .footer {
@@ -88,18 +88,18 @@ app.get('/', (req, res) => {
 </head>
 <body>
     <div class="card">
-        <h1>🎵 BEJU Musik AI</h1>
-        <p>Ciptakan lirik lagu dengan AI</p>
+        <h1>🎵 BEJU AI Musik Studio</h1>
+        <div class="subtitle">Ciptakan lirik lagu dengan AI</div>
         
-        <input type="text" id="theme" placeholder="Masukkan tema lagu...&#10;Contoh: cinta, sahabat, semangat, patah hati">
+        <input type="text" id="theme" placeholder="Masukkan tema lagu...&#10;Contoh: cinta, sahabat, semangat, patah hati, persahabatan">
         
-        <button onclick="buatLirik()">✨ Buat Lirik Lagu ✨</button>
+        <button onclick="buatLirik()">🎤 Buat Lirik Lagu 🎤</button>
         
         <div class="result" id="result">
-            💡 Ketik tema lagu lalu klik tombol di atas
+            💡 Ketik tema lagu di atas lalu klik tombol
         </div>
         <div class="footer">
-            BEJU AI Music Studio - Generator Lirik Lagu
+            BEJU AI Music Studio - Generator Lirik Lagu Indonesia
         </div>
     </div>
 
@@ -113,41 +113,34 @@ app.get('/', (req, res) => {
             }
             
             const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = '🎵 AI sedang menulis lirik...';
+            resultDiv.innerHTML = '🎵 AI sedang menulis lirik yang indah untukmu... ✍️';
             
             setTimeout(() => {
                 const lirik = generateLirik(theme);
                 resultDiv.innerHTML = lirik;
-            }, 500);
+            }, 800);
         }
         
         function generateLirik(theme) {
-            const templates = {
-                cinta: `💕 LAGU CINTA - "${theme}" 💕\n\n[Verse 1]\nSetiap kali kau tersenyum\nHatiku bergetar riang\nSeakan dunia berhenti\nHanya untuk kita berdua\n\n[Chorus]\n${theme}, oh ${theme}\nKau bintang di malam kelam\n${theme}, hanya ${theme}\nYang mampu buatku tenang\n\n[Outro]\nBersamamu selamanya...`,
-                
-                sahabat: `🤝 LAGU PERSAHABATAN - "${theme}" 🤝\n\n[Verse 1]\nKau selalu ada di saatku rapuh\nMenopang langkah saat aku terjatuh\nTak ada rahasia di antara kita\nBersama melewati suka dan duka\n\n[Chorus]\n${theme}, teman sejati\nTerima kasih untuk semua hari\n${theme}, takkan terganti\nKau saudara yang Tuhan beri`,
-                
-                semangat: `🔥 LAGU SEMANGAT - "${theme}" 🔥\n\n[Verse 1]\nBangkitlah wahai hati yang luka\nMasih panjang jalan yang harus kau tempuh\nJangan menyerah sebelum mencoba\nKarena esok masih menyimpan asa\n\n[Chorus]\n${theme}, raih mimpimu\n${theme}, kejar bintangmu\nJangan pernah ragu\nKamu bisa melakukannya!`,
-                
-                patah: `💔 LAGU PATAH HATI - "${theme}" 💔\n\n[Verse 1]\nKau pergi tanpa pamit\nMeninggalkan luka yang dalam\nAir mata jatuh tak henti\nMengiringi kepergianmu\n\n[Chorus]\n${theme}, kenapa kau tega\n${theme}, hancurkan semua rasa\nBiarkan waktu yang kan sembuhkan\nLuka di hati yang tersimpan`
-            };
+            const t = theme.toLowerCase();
             
-            let template = templates.cinta;
-            const temaLower = theme.toLowerCase();
-            
-            if (temaLower.includes('sahabat') || temaLower.includes('teman')) {
-                template = templates.sahabat;
-            } else if (temaLower.includes('semangat') || temaLower.includes('bangkit') || temaLower.includes('sukses')) {
-                template = templates.semangat;
-            } else if (temaLower.includes('patah') || temaLower.includes('kecewa') || temaLower.includes('sedih')) {
-                template = templates.patah;
-            } else if (temaLower.includes('cinta') || temaLower.includes('sayang')) {
-                template = templates.cinta;
-            } else {
-                template = `🎵 LAGU "${theme}" 🎵\n\n[Verse 1]\nDi dalam hati yang terdalam\n${theme} menjadi cerita indah\nSetiap hari ku rasakan\nKehangatan yang tak tergantikan\n\n[Chorus]\n${theme}, oh ${theme}\nKau mengisi hariku\n${theme}, hanya ${theme}\nYang ku inginkan selalu\n\n~ Terima kasih telah menggunakan BEJU AI ~`;
+            if (t.includes('cinta') || t.includes('sayang') || t.includes('kasih')) {
+                return `💕 LAGU CINTA - "${theme}" 💕\n\n[Verse 1]\nKala senja mulai merambat\nMembawa rindu yang terpendam\nSenyummu bagai mentari pagi\nMenerangi setiap malamku\n\n[Chorus]\n${theme}, engkaulah inspirasiku\n${theme}, hanya kau di hatiku\nSeperti bintang yang bersinar\nTerangi gelapnya malam\n\n[Verse 2]\nTakkan pernah ku lupakan\nBetapa indah rasanya\nBersamamu ku temukan arti\nCinta yang sesungguhnya\n\n[Outro]\n${theme}, untukmu selamanya... 🎵`;
             }
             
-            return template;
+            if (t.includes('sahabat') || t.includes('teman') || t.includes('persahabatan')) {
+                return `🤝 LAGU PERSAHABATAN - "${theme}" 🤝\n\n[Verse 1]\nSaat ku jatuh dan rapuh\nKau tiba bagai pelangi\nMenawarkan bahu tuk bersandar\nMenghapus air mataku\n\n[Chorus]\n${theme}, kau sahabat sejati\n${theme}, terima kasih tuk semua hari\nBersama kita tertawa dan menangis\nTakkan terganti oleh waktu\n\n[Verse 2]\nRahasia kita tersimpan rapi\nCerita suka dan duka bersama\nMeski jarak memisahkan nanti\nPersahabatan ini kan abadi\n\n[Outro]\n${theme}, selamanya sahabatku... 🎵`;
+            }
+            
+            if (t.includes('semangat') || t.includes('bangkit') || t.includes('sukses') || t.includes('mimpi')) {
+                return `🔥 LAGU SEMANGAT - "${theme}" 🔥\n\n[Verse 1]\nBangkitlah dari keterpurukan\nJangan pernah berhenti melangkah\nMimpi-mimpimu masih menunggu\nHari esok masih terang\n\n[Chorus]\n${theme}, teruslah berjuang\n${theme}, kejar semua impianmu\nJangan menyerah sebelum menang\nKarena kamu mampu melakukannya\n\n[Verse 2]\nRintangan pasti kan datang\nTapi bukan tuk menghentikan\nJadikan itu batu loncatan\nMenuju puncak kesuksesan\n\n[Outro]\n${theme}, kamu pasti bisa! 💪🎵`;
+            }
+            
+            if (t.includes('patah') || t.includes('kecewa') || t.includes('sedih') || t.includes('hati')) {
+                return `💔 LAGU PATAH HATI - "${theme}" 💔\n\n[Verse 1]\nKau pergi tanpa pamit\nMeninggalkan luka yang dalam\nAir mata jatuh tak henti\nMembasahi pipi ini\n\n[Chorus]\n${theme}, kenapa kau tega\n${theme}, hancurkan semua rasa\nKini aku terjaga sendiri\nDari mimpi yang indah\n\n[Verse 2]\nBiarlah waktu yang kan sembuhkan\nLuka di hati yang tersimpan\nSuatu hari nanti pasti kan datang\nCinta yang lebih baik lagi\n\n[Outro]\nSelamat jalan ${theme}... 🎵`;
+            }
+            
+            return `🎵 LAGU "${theme}" 🎵\n\n[Verse 1]\nDi dalam hati yang terdalam\n${theme} menjadi cerita indah\nSetiap hari ku rasakan\nKehangatan yang tak tergantikan\n\n[Chorus]\n${theme}, oh ${theme}\nKau mengisi hariku\n${theme}, hanya ${theme}\nYang ku inginkan selalu\n\n[Verse 2]\nTakkan pernah kulupa\nBetapa ${theme} berarti\nBersama melewati masa\nMengukir kisah abadi\n\n[Outro]\nTerima kasih ${theme}... 🎵`;
         }
     </script>
 </body>
