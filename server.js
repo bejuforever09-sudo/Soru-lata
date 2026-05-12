@@ -7,7 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 // GANTI DENGAN TOKEN ASLI KAMU - TANPA SPASI!
-const REPLICATE_API_TOKEN = 'r8_4cGeSMrTET1NVH2upcVocUEZPNGYZaAG0tVBE0';
+const REPLICATE_API_TOKEN = '
+r8_FFG**********************************
 
 app.get('/', (req, res) => {
     res.send(`
