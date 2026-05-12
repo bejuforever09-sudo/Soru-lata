@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // ⚠️ GANTI DENGAN TOKEN ASLI KAMU (dari replicate.com/account/api-tokens)
-const REPLICATE_API_TOKEN = 'r8_';
+const REPLICATE_API_TOKEN = 'r8_C2KBX74w0Ce0YnayFfWV0Y93UrasMMb1K91m5
 
 app.get('/', (req, res) => {
     res.send(`
